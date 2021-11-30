@@ -4,10 +4,10 @@
 import java.io.IOException;
 import java.net.SocketException;
 import java.util.Scanner;
+
 /** 
  * @author Alexander Sanchez 
  */
-
 public class Client {
     public static void main(String[] args) throws SocketException, IOException {
         User user = new User();
@@ -41,7 +41,7 @@ public class Client {
                 //Request TGT option
                 case "2" -> {
                     System.out.println("-- Solicitud de TGT --");
-                    String message;
+                    //String message;
                     System.out.println("Escribe tu usuario:");
                     String username = data.next();
                     //System.out.println("TGS ID:");
@@ -71,7 +71,7 @@ public class Client {
                 }
                 //Exit option
                 case "5" -> {
-                    option = "3";
+                    option = "5";
                     break;
                 }
                 //Default option

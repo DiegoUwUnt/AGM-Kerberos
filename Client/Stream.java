@@ -12,10 +12,12 @@ public class Stream extends Socket {
     private BufferedReader input;
     private PrintWriter output;
 
+    //Socket for the client
     Stream(String serverAddress, int serverPort) throws SocketException, IOException {
         socket = new Socket(serverAddress, serverPort);
         setStream();
     }
+    //Socket fot the server
     Stream(Socket socket) throws IOException {
         this.socket = socket;
         setStream();
