@@ -10,67 +10,9 @@ import java.io.ObjectOutputStream;
  * @author Paulina Maldonado
  */
 public class User {
-    private String username;
-    private String password;
     private String TGT;
     private String Ticket;
     
-    /*Username*/
-    //Setter for the username
-    public void setUsername(String username) {
-        this.username = username;
-        try {
-            FileOutputStream file = new FileOutputStream("C:\\AGM-Kerberos\\info\\User\\username.dat");
-            ObjectOutputStream object = new ObjectOutputStream(file);
-            object.writeObject(this.username);
-            file.close();
-            object.close();    
-        } catch(Exception e) {
-            System.err.println(e);
-        }
-    }
-    //Getter for the username
-    public String getUsername() {
-        try {
-            FileInputStream file = new FileInputStream("C:\\AGM-Kerberos\\info\\User\\username.dat");
-            ObjectInputStream object = new ObjectInputStream(file);
-            this.username = object.readObject().toString();
-            file.close();
-            object.close();
-        } catch (Exception e) {
-            System.err.println(e);
-        }
-        return this.username;  
-    }
-
-    /*Password*/
-    //Setter for the password
-    public void setPassword(String password) {
-        this.password = password;
-        try {
-            FileOutputStream file = new FileOutputStream("C:\\AGM-Kerberos\\info\\User\\password.dat");
-            ObjectOutputStream object = new ObjectOutputStream(file);
-            object.writeObject(this.password);
-            file.close();
-            object.close();    
-        } catch(Exception e) {
-            System.err.println(e);
-        }
-    }
-    //Getter for the password
-    public String getPassword() {
-        try {
-            FileInputStream file = new FileInputStream("C:\\AGM-Kerberos\\info\\User\\password.dat");
-            ObjectInputStream object = new ObjectInputStream(file);
-            this.password = object.readObject().toString();
-            file.close();
-            object.close();
-        } catch (Exception e) {
-            System.err.println(e);
-        }
-        return this.password;  
-    }
-
      /*TGT*/
     //Setter for the TGT
     public void setTGT(String TGT) {
@@ -100,7 +42,7 @@ public class User {
     }
 
     /*Ticket*/
-    //Setter for the TGT
+    //Setter for the Ticket
     public void setTicket(String Ticket) {
         this.Ticket = Ticket;
         try {
@@ -118,7 +60,7 @@ public class User {
         try {
             FileInputStream file = new FileInputStream("C:\\AGM-Kerberos\\info\\Tickets\\Ticket.dat");
             ObjectInputStream object = new ObjectInputStream(file);
-            this.TGT = object.readObject().toString();
+            this.Ticket = object.readObject().toString();
             file.close();
             object.close();
         } catch (Exception e) {

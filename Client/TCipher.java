@@ -8,8 +8,8 @@ import java.util.Arrays;
  */
 public class TCipher {
 
-    private int key;
-    private int nColumnas = 5;
+    private long key;
+    private int nColumnas = 10;
 
     private char[][] vector;
     private char[] mensaje;
@@ -29,7 +29,7 @@ public class TCipher {
         }
     }
 
-    public void Cifrar(int Key){
+    public String Cifrar(long Key){
         this.key = Key;
 
         int index = 0;
@@ -48,13 +48,13 @@ public class TCipher {
                 index++;
             }
         }
-
-        System.out.println("\nTexto cifrado: " + String.valueOf(mensaje));
-        System.out.println("Key: " + key);
+        return String.valueOf(mensaje);
+        //System.out.println("\nTexto cifrado: " + String.valueOf(mensaje));
+        //System.out.println("Key: " + key);
     }
 
 
-    public void Descifrar(int key){
+    public String Descifrar(long key){
         this.key = key;
         int nKey, index = 0;
         try{
@@ -74,10 +74,11 @@ public class TCipher {
                 }
             }
 
-            System.out.println("\nTexto descifrado: " + String.valueOf(mensaje));
+            //System.out.println("\nTexto descifrado: " + String.valueOf(mensaje));
         } catch(Exception e){
             System.out.println("\nClave incorrecta");
         }
+        return String.valueOf(mensaje); 
     }
 }
 
