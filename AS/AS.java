@@ -37,7 +37,7 @@ public class AS {
             //Made of a key between the client and tge TGS
             String kCTGS =  keys.genSecretKey();
             //Made of the TicketTGS
-            String ticketTGS = kCTGS + " /-/:/-/ " + clientID + " /-/:/-/ " + String.valueOf(stream.getInetAddress()) + " /-/:/-/ " + tgsID;
+            String ticketTGS = kCTGS + " /-/:/-/ " + clientID + " /-/:/-/ " + "26.74.77.221" + " /-/:/-/ " + tgsID;
             //Cipher of the TicketTGS with the TGS secret key
             long secretKeyASTGS = Long.parseLong(keys.getSecretKeyASTGS());
             System.out.println(String.valueOf(secretKeyASTGS));

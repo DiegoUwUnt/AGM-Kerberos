@@ -57,7 +57,7 @@ public class TCipher {
     public String Descifrar(long key){
         this.key = key;
         int nKey, index = 0;
-        //try{
+        try{
             for (int i = 0; i < nColumnas; i++) {
                 nKey = Character.getNumericValue(String.valueOf(key).charAt(i));
                 for (int j = 0; j < filas; j++) {
@@ -75,9 +75,9 @@ public class TCipher {
             }
 
             //System.out.println("\nTexto descifrado: " + String.valueOf(mensaje));
-        //} catch(Exception e){
-        //    System.out.println("\nClave incorrecta");
-        //}
+        } catch(Exception e){
+            System.out.println("\nClave incorrecta");
+        }
         return String.valueOf(mensaje); 
     }
 }

@@ -24,24 +24,23 @@ public class TGS {
         System.out.println("Conexion aceptada");
         //It receives the message
         String message = stream.receiveMessage();
-        System.out.println(message);
         String[] splitMessage = message.split(" /-/:/-/ ", 3);
         //Decrypt the TicketTGS
         long secretKeyASTGS = Long.parseLong(keys.getSecretKeyASTGS());
-        cipher.setMensaje(splitMessage[1]);
+        System.out.println(String.valueOf(secretKeyASTGS));
         System.out.println(splitMessage[1]);
-        String ticketTGS = cipher.Descifrar(secretKeyASTGS);
-        System.out.println(secretKeyASTGS);
-        System.out.println(cipher.Descifrar(secretKeyASTGS)); 
+        cipher.setMensaje(splitMessage[1].trim());
+        String ticketTGS = cipher.Descifrar(secretKeyASTGS); 
+        System.out.println(ticketTGS);
         String[] splitTicketTGS = ticketTGS.split(" /-/:/-/ ", 4);
         //Decrypt the authenticator
-        cipher.setMensaje(splitMessage[2]);
-        System.out.println(splitTicketTGS[0]);
+        cipher.setMensaje(splitMessage[2].trim());
         String authenticator = cipher.Descifrar(Long.parseLong(splitTicketTGS[0]));
+        System.out.println(authenticator);
         String[] splitAuthenticator = authenticator.split(" /-/:/-/ ", 2);
 
         System.out.println("Generando TicketV ...");
-        if(splitTicketTGS[1].equals(splitAuthenticator[0]) && splitTicketTGS[2].equals(splitAuthenticator[1]) && splitMessage[0].equals(serverVID)) {
+        if(splitTicketTGS[1].contains(splitAuthenticator[0]) && splitTicketTGS[2].trim().contains(splitAuthenticator[1].trim()) && serverVID.contains(splitMessage[0])) {
             //Generate a new key fot the client and the server v
             String kCV = keys.genSecretKey();
             //Made the ticket V
