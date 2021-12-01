@@ -3,12 +3,35 @@
  *RSA Cipher Methods
  */
 import java.math.BigInteger;
+import java.util.ArrayList;
 import java.util.Random;
 
 /**
  * @author Diego panzon
  */
 public class RSACipher {
+    public String genSecretKey() {
+        ArrayList<String> keyNumbers = new ArrayList<>();
+        Random random = new Random();
+        String key = "";
+        keyNumbers.add("0");
+        keyNumbers.add("1");
+        keyNumbers.add("2");
+        keyNumbers.add("3");
+        keyNumbers.add("4");
+        keyNumbers.add("5");
+        keyNumbers.add("6");
+        keyNumbers.add("7");
+        keyNumbers.add("8");
+        keyNumbers.add("9");
+        while (keyNumbers.size() > 0) {
+            int randomIndex = random.nextInt(keyNumbers.size());
+            key = key + keyNumbers.get(randomIndex);
+            keyNumbers.remove(randomIndex);
+        }
+        return key;
+        
+    }
 
     public String[] genKeys(int number) {
         int publicKey;

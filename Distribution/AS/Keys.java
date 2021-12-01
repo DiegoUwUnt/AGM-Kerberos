@@ -6,8 +6,9 @@ import java.io.ObjectOutputStream;
 public class Keys {
     private String publicKeyAS;
     private String privateKeyAS;
-    private String secretKey;
+    private String secretKeyASC;
     private String numberNAS;
+    private String secretKeyASTGS;
 
     /* Public Key */
     // Setter for the Public Key
@@ -67,12 +68,12 @@ public class Keys {
     }
     /* Secret Key */
     // Setter for the Secret Key
-    public void setSecretKey(String secretKey) {
-        this.secretKey = secretKey;
+    public void setSecretKeyASC(String secretKeyASC) {
+        this.secretKeyASC = secretKeyASC;
         try {
-            FileOutputStream file = new FileOutputStream("C:\\AGM-Kerberos\\AS\\Keys\\secretKey.dat");
+            FileOutputStream file = new FileOutputStream("C:\\AGM-Kerberos\\AS\\Keys\\secretKeyASC.dat");
             ObjectOutputStream object = new ObjectOutputStream(file);
-            object.writeObject(this.secretKey);
+            object.writeObject(this.secretKeyASC);
             file.close();
             object.close();
         } catch (Exception e) {
@@ -81,24 +82,18 @@ public class Keys {
     }
 
     // Getter for the Secret Key
-    public String getSecretKey() {
+    public String getSecretKeyASC() {
         try {
-            FileInputStream file = new FileInputStream("C:\\AGM-Kerberos\\AS\\Keys\\secretKey.dat");
+            FileInputStream file = new FileInputStream("C:\\AGM-Kerberos\\AS\\Keys\\secretKeyASC.dat");
             ObjectInputStream object = new ObjectInputStream(file);
-            this.secretKey = object.readObject().toString();
+            this.secretKeyASC = object.readObject().toString();
             file.close();
             object.close();
         } catch (Exception e) {
             System.err.println(e);
         }
-        return this.secretKey;
+        return this.secretKeyASC;
     }
-
-
-
-
-
-
     /* Number NAS */
     // Setter for the Number NAS
     public void setNumberNAS(String numberNAS) {
@@ -126,5 +121,35 @@ public class Keys {
             System.err.println(e);
         }
         return this.numberNAS;
+    }
+
+
+/* Secret Key */
+    // Setter for the Secret Key
+    public void setSecretKeyASTGS(String secretKeyASTGS) {
+        this.secretKeyASTGS = secretKeyASTGS;
+        try {
+            FileOutputStream file = new FileOutputStream("C:\\AGM-Kerberos\\AS\\Keys\\secretKeyASTGS.dat");
+            ObjectOutputStream object = new ObjectOutputStream(file);
+            object.writeObject(this.secretKeyASTGS);
+            file.close();
+            object.close();
+        } catch (Exception e) {
+            System.err.println(e);
+        }
+    }
+
+    // Getter for the Secret Key
+    public String getSecretKeyASTGS() {
+        try {
+            FileInputStream file = new FileInputStream("C:\\AGM-Kerberos\\AS\\Keys\\secretKeyASTGS.dat");
+            ObjectInputStream object = new ObjectInputStream(file);
+            this.secretKeyASTGS = object.readObject().toString();
+            file.close();
+            object.close();
+        } catch (Exception e) {
+            System.err.println(e);
+        }
+        return this.secretKeyASTGS;
     }
 }

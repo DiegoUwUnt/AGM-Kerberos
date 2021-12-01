@@ -10,7 +10,7 @@ import java.util.Scanner;
  * @author Diego Zarza
  */
 
-public class KeysCAS {
+public class KeyC {
     public static void main(String[] args) throws IOException, SocketException {
         Scanner data = new Scanner(System.in);
         RSACipher cipher = new RSACipher();
@@ -51,8 +51,8 @@ public class KeysCAS {
                     for (int i = 0; i < decrypt.length; i++) {
                         secretKey += cipher.descifrar(decrypt[i], privateKeyC, numberNC);
                     }
-
-                    key.setSecretKey(secretKey);
+                    System.out.println(secretKey);
+                    key.setSecretKeyASC(secretKey);
                     System.out.println("Clave secreta guardada");
                     stream.close();
                     break;

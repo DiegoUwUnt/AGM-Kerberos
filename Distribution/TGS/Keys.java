@@ -6,8 +6,10 @@ import java.io.ObjectOutputStream;
 public class Keys {
     private String publicKeyTGS;
     private String privateKeyTGS;
-    private String secretKey;
+    private String secretKeyASTGS;
+    private String secretKeyTGSV;
     private String numberNTGS;
+
 
     /* Public Key */
     // Setter for the Public Key
@@ -69,12 +71,12 @@ public class Keys {
 
     /* Secret Key */
     // Setter for the Secret Key
-    public void setSecretKey(String secretKey) {
-        this.secretKey = secretKey;
+    public void setSecretKeyASTGS(String secretKeyASTGS) {
+        this.secretKeyASTGS = secretKeyASTGS;
         try {
-            FileOutputStream file = new FileOutputStream("C:\\AGM-Kerberos\\TGS\\Keys\\secretKey.dat");
+            FileOutputStream file = new FileOutputStream("C:\\AGM-Kerberos\\TGS\\Keys\\secretKeyASTGS.dat");
             ObjectOutputStream object = new ObjectOutputStream(file);
-            object.writeObject(this.secretKey);
+            object.writeObject(this.secretKeyASTGS);
             file.close();
             object.close();
         } catch (Exception e) {
@@ -83,17 +85,17 @@ public class Keys {
     }
 
     // Getter for the Secret Key
-    public String getSecretKey() {
+    public String getSecretKeyASTGS() {
         try {
-            FileInputStream file = new FileInputStream("C:\\AGM-Kerberos\\TGS\\Keys\\secretKey.dat");
+            FileInputStream file = new FileInputStream("C:\\AGM-Kerberos\\TGS\\Keys\\secretKeyASTGS.dat");
             ObjectInputStream object = new ObjectInputStream(file);
-            this.secretKey = object.readObject().toString();
+            this.secretKeyASTGS = object.readObject().toString();
             file.close();
             object.close();
         } catch (Exception e) {
             System.err.println(e);
         }
-        return this.secretKey;
+        return this.secretKeyASTGS;
     }
 
     /* Number n */
@@ -123,5 +125,35 @@ public class Keys {
             System.err.println(e);
         }
         return this.numberNTGS;
+    }
+
+
+    /* Secret Key */
+    // Setter for the Secret Key
+    public void setSecretKeyTGSV(String secretKeyTGSV) {
+        this.secretKeyTGSV = secretKeyTGSV;
+        try {
+            FileOutputStream file = new FileOutputStream("C:\\AGM-Kerberos\\TGS\\Keys\\secretKeyTGSV.dat");
+            ObjectOutputStream object = new ObjectOutputStream(file);
+            object.writeObject(this.secretKeyTGSV);
+            file.close();
+            object.close();
+        } catch (Exception e) {
+            System.err.println(e);
+        }
+    }
+
+    // Getter for the Secret Key
+    public String getSecretKeyTGSV() {
+        try {
+            FileInputStream file = new FileInputStream("C:\\AGM-Kerberos\\TGS\\Keys\\secretKeyTGSV.dat");
+            ObjectInputStream object = new ObjectInputStream(file);
+            this.secretKeyTGSV = object.readObject().toString();
+            file.close();
+            object.close();
+        } catch (Exception e) {
+            System.err.println(e);
+        }
+        return this.secretKeyTGSV;
     }
 }

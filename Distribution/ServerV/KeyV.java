@@ -10,7 +10,7 @@ import java.util.Scanner;
  * @author Diego Zarza
  */
 
-public class KeysVTGS {
+public class KeyV {
     public static void main(String[] args) throws IOException, SocketException {
         Scanner data = new Scanner(System.in);
         RSACipher cipher = new RSACipher();
@@ -51,8 +51,8 @@ public class KeysVTGS {
                     for (int i = 0; i < decrypt.length; i++) {
                         secretKey += cipher.descifrar(decrypt[i], privateKeyV, numberNV);
                     }
-
-                    key.setSecretKey(secretKey);
+                    System.out.println(secretKey);
+                    key.setSecretKeyTGSV(secretKey);
                     System.out.println("Clave secreta guardada");
                     stream.close();
                     break;

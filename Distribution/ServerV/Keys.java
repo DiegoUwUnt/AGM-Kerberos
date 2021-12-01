@@ -6,7 +6,7 @@ import java.io.ObjectOutputStream;
 public class Keys {
     private String publicKeyV;
     private String privateKeyV;
-    private String secretKey;
+    private String secretKeyTGSV;
     private String numberNV;
 
     /* Public Key */
@@ -67,12 +67,12 @@ public class Keys {
     }
     /* Secret Key */
     // Setter for the Secret Key
-    public void setSecretKey(String secretKey) {
-        this.secretKey = secretKey;
+    public void setSecretKeyTGSV(String secretKeyTGSV) {
+        this.secretKeyTGSV = secretKeyTGSV;
         try {
-            FileOutputStream file = new FileOutputStream("C:\\AGM-Kerberos\\ServerV\\Keys\\secretKey.dat");
+            FileOutputStream file = new FileOutputStream("C:\\AGM-Kerberos\\ServerV\\Keys\\secretKeyTGSV.dat");
             ObjectOutputStream object = new ObjectOutputStream(file);
-            object.writeObject(this.secretKey);
+            object.writeObject(this.secretKeyTGSV);
             file.close();
             object.close();
         } catch (Exception e) {
@@ -81,17 +81,17 @@ public class Keys {
     }
 
     // Getter for the Secret Key
-    public String getSecretKey() {
+    public String getSecretKeyTGSV() {
         try {
-            FileInputStream file = new FileInputStream("C:\\AGM-Kerberos\\ServerV\\Keys\\secretKey.dat");
+            FileInputStream file = new FileInputStream("C:\\AGM-Kerberos\\ServerV\\Keys\\secretKeyTGSV.dat");
             ObjectInputStream object = new ObjectInputStream(file);
-            this.secretKey = object.readObject().toString();
+            this.secretKeyTGSV = object.readObject().toString();
             file.close();
             object.close();
         } catch (Exception e) {
             System.err.println(e);
         }
-        return this.secretKey;
+        return this.secretKeyTGSV;
     }
     /* Number n */
     // Setter for the Number NC

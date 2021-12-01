@@ -6,7 +6,7 @@ import java.io.ObjectOutputStream;
 public class Keys {
     private String publicKeyC;
     private String privateKeyC;
-    private String secretKey;
+    private String secretKeyASC;
     private String numberNC;
 
     /* Public Key */
@@ -65,38 +65,6 @@ public class Keys {
         }
         return this.privateKeyC;
     }
-    /* Secret Key */
-    // Setter for the Secret Key
-    public void setSecretKey(String secretKey) {
-        this.secretKey = secretKey;
-        try {
-            FileOutputStream file = new FileOutputStream("C:\\AGM-Kerberos\\Client\\Keys\\secretKey.dat");
-            ObjectOutputStream object = new ObjectOutputStream(file);
-            object.writeObject(this.secretKey);
-            file.close();
-            object.close();
-        } catch (Exception e) {
-            System.err.println(e);
-        }
-    }
-
-    // Getter for the Secret Key
-    public String getSecretKey() {
-        try {
-            FileInputStream file = new FileInputStream("C:\\AGM-Kerberos\\Client\\Keys\\secretKey.dat");
-            ObjectInputStream object = new ObjectInputStream(file);
-            this.secretKey = object.readObject().toString();
-            file.close();
-            object.close();
-        } catch (Exception e) {
-            System.err.println(e);
-        }
-        return this.secretKey;
-    }
-
-
-
-
     /* Number n */
     // Setter for the Number NC
     public void setNumberNC(String numberNC) {
@@ -111,7 +79,6 @@ public class Keys {
             System.err.println(e);
         }
     }
-
     // Getter for the Number NC
     public String getNumberNC() {
         try {
@@ -124,5 +91,34 @@ public class Keys {
             System.err.println(e);
         }
         return this.numberNC;
+    }
+
+    /* Secret Key */
+    // Setter for the Secret Key
+    public void setSecretKeyASC(String secretKeyASC) {
+        this.secretKeyASC = secretKeyASC;
+        try {
+            FileOutputStream file = new FileOutputStream("C:\\AGM-Kerberos\\Client\\Keys\\secretKeyASC.dat");
+            ObjectOutputStream object = new ObjectOutputStream(file);
+            object.writeObject(this.secretKeyASC);
+            file.close();
+            object.close();
+        } catch (Exception e) {
+            System.err.println(e);
+        }
+    }
+
+    // Getter for the Secret Key
+    public String getSecretKeyASC() {
+        try {
+            FileInputStream file = new FileInputStream("C:\\AGM-Kerberos\\Client\\Keys\\secretKeyASC.dat");
+            ObjectInputStream object = new ObjectInputStream(file);
+            this.secretKeyASC = object.readObject().toString();
+            file.close();
+            object.close();
+        } catch (Exception e) {
+            System.err.println(e);
+        }
+        return this.secretKeyASC;
     }
 }
