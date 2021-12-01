@@ -7,7 +7,7 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 
 /** 
- * @author Alexander Sanchez 
+ * @author Paulina Maldonado
  */
 public class User {
     private String username;
@@ -78,7 +78,7 @@ public class User {
         try {
             FileOutputStream file = new FileOutputStream("C:\\AGM-Kerberos\\info\\Tickets\\TGT.dat");
             ObjectOutputStream object = new ObjectOutputStream(file);
-            object.writeObject(this.username);
+            object.writeObject(this.TGT);
             file.close();
             object.close();    
         } catch(Exception e) {
@@ -98,5 +98,34 @@ public class User {
         }
         return this.TGT;  
     }
+
+    /*Ticket*/
+    //Setter for the TGT
+    public void setTicket(String Ticket) {
+        this.Ticket = Ticket;
+        try {
+            FileOutputStream file = new FileOutputStream("C:\\AGM-Kerberos\\info\\Tickets\\Ticket.dat");
+            ObjectOutputStream object = new ObjectOutputStream(file);
+            object.writeObject(this.Ticket);
+            file.close();
+            object.close();    
+        } catch(Exception e) {
+            System.err.println(e);
+        }
+    }
+    //Getter for the Ticket
+    public String getTicket() {
+        try {
+            FileInputStream file = new FileInputStream("C:\\AGM-Kerberos\\info\\Tickets\\Ticket.dat");
+            ObjectInputStream object = new ObjectInputStream(file);
+            this.TGT = object.readObject().toString();
+            file.close();
+            object.close();
+        } catch (Exception e) {
+            System.err.println(e);
+        }
+        return this.Ticket;  
+    }
+
 
 }
