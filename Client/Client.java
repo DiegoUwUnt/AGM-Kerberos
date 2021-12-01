@@ -71,7 +71,7 @@ public class Client {
                 }
                 //Exit option
                 case "5" -> {
-                    option = "5";
+                    System.exit(0);
                     break;
                 }
                 //Default option
@@ -79,7 +79,7 @@ public class Client {
                     break;
                 }
             }
-        } while(option != "5"); 
+        } while(option != "5");     
         
         
 
