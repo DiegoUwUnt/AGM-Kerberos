@@ -98,6 +98,33 @@ e
                 }
                 //Service request option
                 case "3" -> {
+                    System.out.println("-- Solicitud del Servicio --");
+                    String message;
+                    System.out.println("Escribe ID del servidorS");
+                    String serverSID = data.next();
+                    //
+                    String ticketV = user.getTicket();
+                    //Generate the authenticator with the client ID and the client AD
+                    String authenticator = clientID + " /-/:/-/ " + "26.74.77.221";
+                    //Enrypt the authenticator
+                    cipher.setMensaje(authenticator.trim());
+                    String cAuthenticator = cipher.Cifrar(Long.parseLong(kCV));
+                    //Generate the message with the ServerV ID, the Ticket TGS and the Autheticator encrypted
+                    message = serverSID + " /-/:/-/ " + ticketV + " /-/:/-/ " + cAuthenticator;
+                    //Instance of a data socket to send the username
+                    Stream stream = new Stream(stream.sendMessage(message));
+                    //Receive the message V and print the message
+                    String cipherPackageS = stream.receiveMessage();
+                    cipher.setMensaje(cipherPackageS.trim());
+                    System.out.println("Ticket cifrado: " + cipherPackageS);
+                    //Decrypt the TicketV
+                    String packageS = cipher.Descifrar(Long.parseLong(kCV));
+                    String[] splitPackageS = packageS.split(" /-/:/-/ ", 3);
+                    //Saved the key
+                    kCV = splitPackageS[0];
+                    user.setTicket(splitPackageS[2]);
+                    System.out.println("Ticket descifrado: " + packageS);
+                    stream.close();
 
                     break;
                 }
